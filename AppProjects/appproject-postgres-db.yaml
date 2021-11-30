@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: postgres-db
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: ClusterRole
+  - group: '*'
+    kind: ClusterRoleBinding
+  - group: '*'
+    kind: CustomResourceDefinition
+  description: 'PostgreSQL DB as a service '
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - https://github.com/Yaroksito/postgres-operator-5.0.3.git

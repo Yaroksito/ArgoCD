@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: etcd-backup
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: ConfigMap
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: PersistentVolumeClaim
+  - group: '*'
+    kind: CronJob
+  - group: '*'
+    kind: ServiceAccount
+  - group: '*'
+    kind: ClusterRoleBinding
+  description: 'schedule etc-backup '
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - https://github.com/Yaroksito/etcd-backup.git

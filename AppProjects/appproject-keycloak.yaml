@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: keycloak
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: Service
+  - group: '*'
+    kind: PersistentVolumeClaim
+  - group: '*'
+    kind: PersistentVolume
+  - group: '*'
+    kind: Deployment
+  description: Persistent keycloak app with PostgreSQL DB
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - https://github.com/Yaroksito/keycloakdb.git

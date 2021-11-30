@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dell-opertor-olm
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: Service
+  - group: '*'
+    kind: Role
+  - group: '*'
+    kind: RoleBinding
+  - group: '*'
+    kind: ClusterRoleBinding
+  - group: '*'
+    kind: ClusterRole
+  - group: '*'
+    kind: CustomResourceDefinition
+  - group: '*'
+    kind: ServiceAccount
+  - group: '*'
+    kind: Deployment
+  - group: '*'
+    kind: '*'
+  description: Dell CSI Operator OLM
+  destinations:
+  - namespace: dell-csi-operator
+    server: https://kubernetes.default.svc
+  - namespace: openshift-marketplace
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/Yaroksito/dell-csi-operator-olm.git

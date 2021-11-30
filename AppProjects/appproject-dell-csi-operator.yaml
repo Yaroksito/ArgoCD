@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dell-csi-operator
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: ServiceAccount
+  - group: '*'
+    kind: ConfigMap
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: CustomResourceDefinition
+  - group: '*'
+    kind: Role
+  - group: '*'
+    kind: ClusterRole
+  - group: '*'
+    kind: ClusterRoleBinding
+  - group: '*'
+    kind: RoleBinding
+  - group: '*'
+    kind: Service
+  - group: '*'
+    kind: Deployment
+  description: Dell CSI Operator
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - https://github.com/Yaroksito/dell-operator.git
