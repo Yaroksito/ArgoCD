@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dell-csi-operaotr
+  namespace: argocd
+spec:
+  destination:
+    namespace: dell-csi-operator
+    server: https://kubernetes.default.svc
+  project: dell-opertor-olm
+  source:
+    path: .
+    repoURL: https://github.com/Yaroksito/dell-csi-operator-olm.git
+    targetRevision: HEAD
